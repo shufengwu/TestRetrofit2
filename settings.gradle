@@ -1,0 +1,1 @@
+include ':app', ':testrtrofit2', ':testsample', ':testquerymap', ':testpost'
