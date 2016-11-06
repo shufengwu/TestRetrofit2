@@ -8,6 +8,8 @@
       <module fileurl="file://$PROJECT_DIR$/testquerymap/testquerymap.iml" filepath="$PROJECT_DIR$/testquerymap/testquerymap.iml" />
       <module fileurl="file://$PROJECT_DIR$/testrtrofit2/testrtrofit2.iml" filepath="$PROJECT_DIR$/testrtrofit2/testrtrofit2.iml" />
       <module fileurl="file://$PROJECT_DIR$/testsample/testsample.iml" filepath="$PROJECT_DIR$/testsample/testsample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testupload/testupload.iml" filepath="$PROJECT_DIR$/testupload/testupload.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vDiskSdk/vDiskSdk.iml" filepath="$PROJECT_DIR$/vDiskSdk/vDiskSdk.iml" />
     </modules>
   </component>
 </project>

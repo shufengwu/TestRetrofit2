@@ -13,6 +13,8 @@
             <option value="$PROJECT_DIR$/testquerymap" />
             <option value="$PROJECT_DIR$/testrtrofit2" />
             <option value="$PROJECT_DIR$/testsample" />
+            <option value="$PROJECT_DIR$/testupload" />
+            <option value="$PROJECT_DIR$/vDiskSdk" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

@@ -1,1 +1,2 @@
-include ':app', ':testrtrofit2', ':testsample', ':testquerymap', ':testpost'
+include ':app', ':testrtrofit2', ':testsample', ':testquerymap', ':testpost', ':testupload'
+include ':vDiskSdk'

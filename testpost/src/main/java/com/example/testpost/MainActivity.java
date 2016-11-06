@@ -7,6 +7,8 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.net.URLEncoder;
+
 import okhttp3.OkHttpClient;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -17,7 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final String AppKey = "12c5afd699940";
+    private String AppKey = "12c5afd699940";
     private TextView show;
 
     @Override
@@ -28,34 +30,42 @@ public class MainActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                Retrofit retrofit2 = new Retrofit.Builder()
-                        .baseUrl("http://apicloud.mob.com/")
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build();
-                AirService airService = retrofit2.create(AirService.class);
-                /*Map<String,String> map = new HashMap<String, String>();
-                map.put("key",AppKey);
-                map.put("city","朝阳");
-                map.put("province","北京");
-                Call<AirBean> call = airService.groupList(map);*/
-                Call<AirBean> call = airService.groupList("12c5afd699940", "朝阳","北京");
-                call.enqueue(new Callback<AirBean>() {
-                    @Override
-                    public void onResponse(Call<AirBean> call, final Response<AirBean> response) {
-                        final AirBean airBean = response.body();
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                show.setText(response.body().getMsg()+"");
-                            }
-                        });
-                    }
+                try{
+                    Retrofit retrofit2 = new Retrofit.Builder()
+                            .baseUrl("http://apicloud.mob.com/")
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .build();
+                    AirService airService = retrofit2.create(AirService.class);
+                    /*Air air = new Air();
+                    air.setKey(AppKey);
+                    air.setCity("朝阳");
+                    air.setProvince("北京");*/
+                    Call<AirBean> call = airService.groupList("12c5afd699940","朝阳" ,"北京");
+                    call.enqueue(new Callback<AirBean>() {
+                        @Override
+                        public void onResponse(Call<AirBean> call, Response<AirBean> response) {
+                            final AirBean airBean = response.body();
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    show.setText(airBean.getResult().get(0).getDressingIndex());
+                                    /*for (int i=0;i<airBean.getResult().size();i++){
+                                        System.out.println(airBean.getResult().get(i));
+                                    }*/
+                                    //show.setText(airBean.getResult().get(0).getQuality());
+                                }
+                            });
+                        }
 
-                    @Override
-                    public void onFailure(Call<AirBean> call, Throwable t) {
-                        Log.d("cylog", "Error" + t.toString());
-                    }
-                });
+                        @Override
+                        public void onFailure(Call<AirBean> call, Throwable t) {
+
+                        }
+                    });
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+
             }
         }).start();
     }
